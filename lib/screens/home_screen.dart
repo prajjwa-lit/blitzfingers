@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_button.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,12 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   CustomButton(
                     text: 'Create',
-                    onTap: () {},
+                    onTap: () => Navigator.pushNamed(context, '/create-room'),
                     isHome: true,
                   ),
                   CustomButton(
                     text: 'Join',
-                    onTap: () {},
+                    onTap: () => Navigator.pushNamed(context, '/join-room'),
                     isHome: true,
                   ),
                 ],
