@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
+import '../utils/socket_client.dart';
 
 class CreateRoomScreen extends StatefulWidget {
   const CreateRoomScreen({super.key});
@@ -12,6 +14,7 @@ class CreateRoomScreen extends StatefulWidget {
 
 class _CreateRoomScreenState extends State<CreateRoomScreen> {
   final TextEditingController _nameController = TextEditingController();
+  final SocketClient _socketClient = SocketClient.instance;
 
   @override
   void dispose() {
@@ -19,11 +22,24 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
     _nameController.dispose();
   }
 
+  testing() {
+    _socketClient.socket!.emit('test', 'This is working!');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _socketClient.socket!.on('connect', (_) {
+      log('Connected to server');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: Text('Create Room'),
       ),
       body: Center(
@@ -49,14 +65,16 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   height: size.height * 0.08,
                 ),
                 CustomTextField(
-                  
                   controller: _nameController,
                   hintText: 'Enter your nickname',
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                CustomButton(text: 'Create', onTap: () {}),
+                CustomButton(
+                  text: 'Create',
+                  onTap: testing,
+                ), 
               ],
             ),
           ),
