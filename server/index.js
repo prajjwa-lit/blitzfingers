@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const mongoose = require("mongoose");
+const Game = require("./models/Game");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,8 +18,16 @@ const DB = process.env.MONGODB_URL;
 //listening to socket io events from our client (flutter code)
 io.on("connection", (socket) => {
   console.log("a user connected: ", socket.id);
-  socket.on("create-game", async);
-});
+
+  socket.on("create-game", async ({ nickname }) => {
+    try {
+      let game = new Game();
+      
+    } catch (e) {
+      console.log(e);
+    }
+  });
+}); 
 
 mongoose
   .connect(DB)
