@@ -21,11 +21,10 @@ class CustomButton extends StatelessWidget {
         text,
         style: const TextStyle(
           fontSize: 16,
-          color: Colors.brown,
+          color: Colors.white,
         ),
       ),
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.amber,
         minimumSize: Size(
           !isHome ? width : width / 5,
           50,

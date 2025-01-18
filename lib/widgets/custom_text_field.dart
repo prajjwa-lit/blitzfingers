@@ -4,17 +4,14 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   const CustomTextField({
-    super.key,
+    Key? key,
     required this.controller,
     required this.hintText,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onTapOutside: (event) {
-        FocusScope.of(context).unfocus();
-      },
       controller: controller,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -26,14 +23,16 @@ class CustomTextField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
-            color: Colors.grey,
+            color: Colors.transparent,
           ),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 14,
         ),
-        fillColor: Colors.grey[200],
+        fillColor: const Color(
+          0xffF5F5FA,
+        ),
         hintText: hintText,
         hintStyle: const TextStyle(
           fontSize: 14,
