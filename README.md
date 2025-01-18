@@ -1,6 +1,6 @@
 # Blitzfingers
 
-Blitzfingers is a typeracer clone built with Flutter, allowing two players to compete in real-time typing competitions. The app is responsive and works on both web and mobile platforms, with a scalable backend powered by Node.js and MongoDB.
+Blitzfingers is a cool typing competiton app built with Flutter, allowing two players to compete in real-time typing competitions. The app is responsive and works on both web and mobile platforms, with a scalable backend powered by Node.js and MongoDB.
 
 ## Features
 
